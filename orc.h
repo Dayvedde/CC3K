@@ -1,0 +1,47 @@
+#ifndef __ORC_H__
+#define __ORC_H__
+
+#include "character.h"
+#include <string>
+
+class Orc: public Character{
+	char symbol, onObj;
+	int r, c;
+	double dmgA, health, attack, defence, gold, maxHP;
+	std::string race;
+	static Orc *instance;
+	static void cleanup();
+	Orc();
+    
+public:
+	static void setInstance();	
+	int getHealth();
+	int getAttack();
+	int getDefence();
+	int getMaxHealth();
+    
+	int getNumPlayer();
+	void setNumPlayer();
+    
+	// need this for potions & treasure to take effect
+	void setHealth(int);
+	void setAttack(int);
+	void setDefence(int);
+	void setGold(double);
+	double getGold();
+	int getDamage(Character *c);
+	char getSymbol();
+	std::string getRace();
+	void setCoords(int r, int c);
+	int getR();
+	int getC();
+	void move(std::string dir);
+	char getOnObj();
+	void setOnObj(char obj);
+    
+	static Orc *getInstance();
+    
+	~Orc();
+};
+
+#endif
